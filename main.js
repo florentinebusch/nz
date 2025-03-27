@@ -200,7 +200,7 @@ const STOPS = [
     ]
 
 // Karte initialisieren
-let map = L.map('map').setView([stop.lat, stop.lng], stop.zoom);
+let map = L.map('map');
 
 // Hintergrundfarbe definieren
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -221,9 +221,15 @@ for (let i=0; i<STOPS.length; i++){
             <li>Geographische Breite ${STOPS[i].lat.toFixed(5)}°</li>
             <li>Geographische Länge ${STOPS[i].lng.toFixed(5)}°</li>
         </ul>
-    `).openPopup();
+    `);
+
+    // auf eigene Etappe blicken und Popup öffnen
+    if (STOPS[i].user == "florentinebusch") {
+        map.setView([STOPS[i].lat, STOPS[i].lng], STOPS[i].zoom);
+        marker.openPopup();
+    }
 }
 
 
 
-// Groß schreiben nur für Konstanten!
+// Groß schreiben nur für Konstanten! Klein für welche, die man überschrieben werden können.
