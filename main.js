@@ -22,7 +22,7 @@ let marker = L.marker([-45.317222, 166.988333]).addTo(map);
 marker.bindPopup(`
             <b>Hello world!</b>
             <br>
-            I am a popup at ${lat} / ${lng}.
+            I am a popup at ${lat.toFixed(5)} / ${lng.toFixed(5)}.
         `).openPopup();
 
 // Groß schreiben nur für Konstanten!
