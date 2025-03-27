@@ -2,12 +2,18 @@
 Script für die Neuseelandreise
 */
 
-let lat = -45.317222;
-let lng = 166.988333;
-let zoom = 11;
+
+let stop = {
+    nr: 20,
+    title: "Doubtful Sound",
+    user: "florentinebusch",
+    lat: -45.317222,
+    lng: 166.988333,
+    zoom: 11,
+};
 
 // Karte initialisieren
-let map = L.map('map').setView([lat, lng], zoom);
+let map = L.map('map').setView([stop.lat, stop.lng], stop.zoom);
 
 // Hintergrundfarbe definieren
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -16,15 +22,17 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 // Marker zeichnen
-let marker = L.marker([-45.317222, 166.988333]).addTo(map);
+let marker = L.marker([stop.lat, stop.lng]).addTo(map);
 
 // Popup definieren und öffnen
 marker.bindPopup(`
             <h2>Doubtful Sound</h2>
              <ul> 
-                <li>Geographische Breite ${lat.toFixed(5)}°</li>
-                <li>Geographische Länge ${lng.toFixed(5)}°</li>
+                <li>Geographische Breite ${stop.lat.toFixed(5)}°</li>
+                <li>Geographische Länge ${stop.lng.toFixed(5)}°</li>
             </ul>
         `).openPopup();
+
+
 
 // Groß schreiben nur für Konstanten!
