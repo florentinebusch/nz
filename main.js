@@ -2,8 +2,12 @@
 Script für die Neuseelandreise
 */
 
+let lat = -45.317222;
+let lng = 166.988333;
+let zoom = 11;
+
 // Karte initialisieren
-var map = L.map('map').setView([-45.317222, 166.988333], 11);
+let map = L.map('map').setView([lat, lng], zoom);
 
 // Hintergrundfarbe definieren
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -12,9 +16,9 @@ var map = L.map('map').setView([-45.317222, 166.988333], 11);
         }).addTo(map);
 
 // Marker zeichnen
-        var marker = L.marker([-45.317222, 166.988333]).addTo(map);
+        let marker = L.marker([-45.317222, 166.988333]).addTo(map);
 
 // Popup definieren und öffnen
         marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
 
-        
+// Groß schreiben nur für Konstanten!
