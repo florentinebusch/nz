@@ -40,7 +40,7 @@ const STOPS = [
      {  
         nr: 4,
         title: "Cormandel Peninsula",
-        usr:"Gregorysprenger2001",
+        user:"Gregorysprenger2001",
         lat: -37.882778,
         lng: 175.636667,
         zoom: 11,
@@ -232,10 +232,20 @@ for (let i=0; i<STOPS.length; i++){
     let option = document.createElement("option")
     option.value = STOPS[i].user;
     option.text = STOPS[i].title;
-    document.querySelector("#pulldown select").appendChild(option)
+    if (STOPS[i].user == "florentinebusch") {
+        option.selected = true;
+    }
+    document.querySelector("#pulldown select").appendChild(option);
 
 }
 
+// Auf Änderungen beim Pulldown reagieren
+document.querySelector("#pulldown select").onchange = function(evt) {
+    let url = `https://${evt.target.value}.github.io/nz` ;
+    //console.log(url); 
+    //console.log(evt.target.value); 
+    window.location = url; 
+}
 
 
-// Groß schreiben nur für Konstanten! Klein für welche, die man überschrieben werden können.
+// Groß schreiben nur für Konstanten! Klein für welche, die überschrieben werden können.
