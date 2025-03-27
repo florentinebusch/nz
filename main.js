@@ -19,6 +19,10 @@ let map = L.map('map').setView([lat, lng], zoom);
         let marker = L.marker([-45.317222, 166.988333]).addTo(map);
 
 // Popup definieren und öffnen
-        marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+        marker.bindPopup(`
+            <b>Hello world!</b>
+            <br>
+            I am a popup.
+        `).openPopup();
 
 // Groß schreiben nur für Konstanten!
