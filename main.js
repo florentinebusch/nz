@@ -10,19 +10,19 @@ let zoom = 11;
 let map = L.map('map').setView([lat, lng], zoom);
 
 // Hintergrundfarbe definieren
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        }).addTo(map);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
 
 // Marker zeichnen
-        let marker = L.marker([-45.317222, 166.988333]).addTo(map);
+let marker = L.marker([-45.317222, 166.988333]).addTo(map);
 
 // Popup definieren und öffnen
-        marker.bindPopup(`
+marker.bindPopup(`
             <b>Hello world!</b>
             <br>
-            I am a popup.
+            I am a popup at ${lat} / ${lng}.
         `).openPopup();
 
 // Groß schreiben nur für Konstanten!
