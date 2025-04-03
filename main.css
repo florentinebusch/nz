@@ -74,6 +74,10 @@ figure>img,
         0 6px 20px 0 rgba(0, 0, 0, 0.2);
 }
 
+#pulldown {
+    transform: (5%, 1em);
+}
+
 @media screen and (max-width: 1280px) {
     main {
         border: none;
