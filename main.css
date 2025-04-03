@@ -75,7 +75,9 @@ figure>img,
 }
 
 #pulldown {
-    transform: (5%, 1em);
+    position: relative;
+    left: 5%;
+    top: 1em;
 }
 
 @media screen and (max-width: 1280px) {
