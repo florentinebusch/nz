@@ -208,11 +208,42 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
+// Overlays definieren
+let overlays = {
+    stops: L.featureGroup().addTo(map),
+}
+
+// Kontrollzentrum für die Layer mit Code für die Definition der Hintergrundkarte
+L.control.layers({
+    "Esri WorldImagery": L.tileLayer.provider('Esri.WorldImagery').addTo(map),
+    "OpenTopoMap": L.tileLayer.provider('OpenTopoMap').addTo(map),
+    "OpenStreetMap": L.tileLayer.provider('OpenStreetMap.Mapnik').addTo(map),
+}, {
+    "Stops": overlays.stops,
+}).addTo(map);
+
+
+// Maßstab
+L.control.scale({
+    imperial: false,
+}).addTo(map);
+
+//Marker können benutzt werden
+async function loadstops(url) {
+    let response = await fetch(url);
+    let jsondata = await response.json();
+    console.log(jsondata);
+    L.geoJSON(jsondata, {
+        attribution: "Datenquelle: STOPS </a>"
+    }).addTo(overlays.stops);
+}
+
+
 //Loop über Etappen
 for (let i=0; i<STOPS.length; i++){
     console.log(i, STOPS[i], STOPS[i].title);
     // Marker zeichnen
-    let marker = L.marker([STOPS[i].lat, STOPS[i].lng]).addTo(map);
+    let marker = L.marker([STOPS[i].lat, STOPS[i].lng]).addTo(overlays.stops);
 
     // Popup definieren und öffnen
     marker.bindPopup(`
